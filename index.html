@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="assets/style.09421f6a.css">
+    <link rel="stylesheet" href="assets/style.403e1a87.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Passphrase and Password Generator</title>
@@ -12,12 +12,11 @@
       <div id="header">
       <h1>Passphrase and Password Generator</h1>
         <ul id="navigation">
-          <li><a href="index.html">Generate Passwords</a></li>
-          <li><a href="what.html">What is entropy?</a></li>
-          <li><a href="test.html">Entropy Testing Meter</a></li>
+          <li><a href="index.html">Generate</a></li>
+          <li><a href="bookmarklets.html">Bookmarklets</a></li>
           <li><a href="#" onclick="swap_stylesheet(); generate_colors()" id="theme_switcher">Dark Theme</a></li>
         </ul>
-        <p>Select minimum entropy (in bits): </p>
+        <p>Select minimum security margin (in bits): </p>
         <div id="entropy-toolbar">
           <input type="radio" name="entropy" value="55" id="rtb1" onclick="load_passes()"><label id="entropy-55" for="rtb1">55</label>
           <input type="radio" name="entropy" value="60" id="rtb2" onclick="load_passes()"><label id="entropy-60" for="rtb2">60</label>
@@ -54,6 +53,7 @@
             <select id="bitcoin-options">
               <option>Chinese (Simp)</option>
               <option>Chinese (Trad)</option>
+              <option>Czech</option>
               <option selected="selected">English</option>
               <option>French</option>
               <option>Italian</option>
@@ -74,27 +74,31 @@
           <div class="optional">
             <select id="diceware-options">
               <option>Basque</option>
-              <option>Beale</option>
               <option>Bulgarian</option>
               <option>Catalan</option>
               <option>Chinese</option>
               <option>Czech</option>
               <option>Danish</option>
               <option>Dutch</option>
-              <option>Dutch (Alt)</option>
               <option selected="selected">English</option>
+              <option>English (Beale)</option>
               <option>Esperanto</option>
+              <option>Estonian</option>
               <option>Finnish</option>
               <option>French</option>
               <option>German</option>
+              <option>Hebrew</option>
               <option>Hungarian</option>
               <option>Italian</option>
               <option>Japanese</option>
+              <option>Latin</option>
               <option>Maori</option>
               <option>Norwegian</option>
               <option>Polish</option>
               <option>Portuguese</option>
+              <option>Romanian</option>
               <option>Russian</option>
+              <option>Slovak</option>
               <option>Slovenian</option>
               <option>Spanish</option>
               <option>Swedish</option>
@@ -112,9 +116,16 @@
           <p class="cell-title"><strong>EFF</strong></p>
           <div class="optional">
             <select id="eff-options">
-              <option>Distant Words</option>
-              <option>Long Words</option>
-              <option selected="selected">Short Words</option>
+              <optgroup label="Official">
+                <option>Distant Words</option>
+                <option>Long Words</option>
+                <option selected="selected">Short Words</option>
+              </optgroup>
+              <optgroup label="Unofficial">
+                <option>Game of Thrones</option>
+                <option>Harry Potter</option>
+                <option>Star Trek</option>
+                <option>Star Wars</option>
             </select>
           </div>
           <button value="Generate" onclick="generate_passphrase('eff');">Generate</button>
@@ -128,6 +139,7 @@
           <p class="cell-title"><strong>Pseudowords</strong></p>
           <div class="optional">
             <select id="pseudo-options">
+              <option>Apple, Inc.</option>
               <option>Bubble Babble</option>
               <option>Korean K-pop</option>
               <option>Secret Ninja</option>
@@ -144,23 +156,30 @@
           <p class="cell-title"><strong>Random</strong></p>
           <div class="optional">
             <select id="random-options">
-              <option>Base-94</option>
-              <option>Base-85</option>
-              <option>Base-64 (+/)</option>
-              <option>Base-64 (-_)</option>
-              <option>Base-62</option>
-              <option>Base-58 (Bitcoin)</option>
-              <option>Base-52</option>
-              <option>Base-36</option>
-              <option>Base-32</option>
-              <option>Base-26</option>
-              <option>Base-16</option>
-              <option>Base-10</option>
-              <option>Base-8</option>
-              <option>Base-2</option>
-              <option>Coin Flips</option>
-              <option>DNA Sequence</option>
-              <option>Emoji</option>
+              <optgroup label="ASCII">
+                <option selected="selected">Base-94</option>
+                <option>Base-85</option>
+                <option>Base-64 (+/)</option>
+                <option>Base-64 (-_)</option>
+                <option>Base-62</option>
+                <option>Base-58 (Bitcoin)</option>
+                <option>Base-52</option>
+                <option>Base-36</option>
+                <option>Base-32</option>
+                <option>Base-26</option>
+                <option>Base-16</option>
+                <option>Base-10</option>
+                <option>Base-8</option>
+                <option>Base-2</option>
+                <option>Coin Flips</option>
+                <option>DNA Sequence</option>
+              </optgroup>
+              <optgroup label="Unicode">
+                <option>Base-256</option>
+                <option>Base-256 (Braille)</option>
+                <option>Base-188 (ISO 8859-1)</option>
+                <option>Emoji</option>
+              </optgroup>
             </select>
           </div>
           <button value="Generate" onclick="generate_random();">Generate</button>
@@ -172,7 +191,8 @@
         </div>
       </div>
       <div id="footer" class="clear">
-	<p><strong>Disclaimer: This is for demonstration purposes only and is not logging passwords!</strong></p>
+        <p>Never trust online password generators, including mine.<br/>For better security, use the <a href="bookmarklets.html">bookmarklets</a>, or my <a href="https://github.com/atoponce/nodepassgen">command-line tool</a>.</p>
+	<p><strong>For demonstration purposes only. It is not logging passwords.</strong></p>
         <p>
           <a href="https://github.com/atoponce/webpassgen"><img alt="Github logo" title="Get the source code" src="assets/github.png" /></a>
           <a href="https://github.com/atoponce/webpassgen/releases/latest"><img alt="Download icon" title="Download latest release" src="assets/download.png" /></a>
@@ -183,15 +203,17 @@
     <div id="overlay" onclick="document.getElementById('overlay').style.display='none';">
         <div id="overlay_text">
             <p>🔥🔥🔥🔥🔥</p>
-            <p>Using emojis for your password is <a href="https://apple.stackexchange.com/questions/202143/i-included-emoji-in-my-password-and-now-i-cant-log-in-to-my-account-on-yosemite">dangerous</a>!</p>
-            <p>Use Firefox if you want color.</p>
+            <p>Here be dragons!</p>
+            <p>Using non-ASCII Unicode characters could <a style="color: #F3BC00" href="https://apple.stackexchange.com/questions/202143/i-included-emoji-in-my-password-and-now-i-cant-log-in-to-my-account-on-yosemite">lock you out of your account</a>!</p>
+            <p>Further, emoji codepoints specifically are <a style="color: #F3BC00" href="https://twitter.com/FakeUnicode/status/1192245294429130752">ambiguous, ignored, unpredictable, and unstable</a>.</p>
+            <p>You should exercise extreme caution using Unicode passwords.</p>
             <p>Click anywhere to continue.</p>
-            <p>🔥🔥🔥🔥🔥</p>
+            <p>🐉🐉🐉🐉🐉</p>
         </div>
     </div>
 
     <!-- core functions -->
-    <script src="js/main.5424dd60.js"></script>
+    <script src="js/main.5ce2ecd4.js"></script>
 
     <!--
         Because the word lists are static, and not changing, the filename is
@@ -207,59 +229,68 @@
     -->
 
     <!-- alternate passphrase generator -->
-    <script src="lists/alternate_colors.4f120225.js"></script>
-    <script src="lists/alternate_elvish.46f94545.js"></script>
-    <script src="lists/alternate_klingon.82b56478.js"></script>
-    <script src="lists/alternate_pgp.e0ed41a5.js"></script>
-    <script src="lists/alternate_rockyou.f0ffe682.js"></script>
-    <script src="lists/alternate_simpsons.075b9d4e.js"></script>
-    <script src="lists/alternate_trump.a8dbbc50.js"></script>
+    <script src="lists/alternate_colors.37c31dad.js"></script>
+    <script src="lists/alternate_elvish.ffdbd113.js"></script>
+    <script src="lists/alternate_klingon.8e8a7926.js"></script>
+    <script src="lists/alternate_pgp.adfd4dbd.js"></script>
+    <script src="lists/alternate_rockyou.611ec28b.js"></script>
+    <script src="lists/alternate_simpsons.d800e9f1.js"></script>
+    <script src="lists/alternate_trump.9fdc4d17.js"></script>
 
     <!-- bitcoin passphrase generator -->
-    <script src="lists/bitcoin_cn_simp.4d30f92a.js"></script>
-    <script src="lists/bitcoin_cn_trad.3acac321.js"></script>
-    <script src="lists/bitcoin_en.0735e2b5.js"></script>
-    <script src="lists/bitcoin_es.0c004634.js"></script>
-    <script src="lists/bitcoin_fr.339b0f81.js"></script>
-    <script src="lists/bitcoin_it.9bbe22b2.js"></script>
-    <script src="lists/bitcoin_jp.6a85191a.js"></script>
-    <script src="lists/bitcoin_kr.78020c04.js"></script>
+    <script src="lists/bitcoin_cn_simp.a2dc8b40.js"></script>
+    <script src="lists/bitcoin_cn_trad.5f81c384.js"></script>
+    <script src="lists/bitcoin_cz.64d065a7.js"></script>
+    <script src="lists/bitcoin_en.361f865f.js"></script>
+    <script src="lists/bitcoin_es.2fa42043.js"></script>
+    <script src="lists/bitcoin_fr.faeb3bf1.js"></script>
+    <script src="lists/bitcoin_it.62a14c67.js"></script>
+    <script src="lists/bitcoin_jp.63b441d2.js"></script>
+    <script src="lists/bitcoin_ko.e9021b60.js"></script>
 
     <!-- diceware passphrase generator -->
-    <script src="lists/diceware_beale.33e371d1.js"></script>
-    <script src="lists/diceware_bg.9f31ec78.js"></script>
-    <script src="lists/diceware_ca.73ae15a1.js"></script>
-    <script src="lists/diceware_cn.a655016e.js"></script>
-    <script src="lists/diceware_cz.83ed77d0.js"></script>
-    <script src="lists/diceware_da.d2fcb45a.js"></script>
-    <script src="lists/diceware_de.bc8b3398.js"></script>
-    <script src="lists/diceware_en.f46f1222.js"></script>
-    <script src="lists/diceware_eo.d2bfb6dc.js"></script>
-    <script src="lists/diceware_es.7eb7d089.js"></script>
-    <script src="lists/diceware_eu.7b0dbb90.js"></script>
-    <script src="lists/diceware_fi.f6cea920.js"></script>
-    <script src="lists/diceware_fr.d82cf588.js"></script>
-    <script src="lists/diceware_hu.4407c3a1.js"></script>
-    <script src="lists/diceware_it.26cb8bf3.js"></script>
-    <script src="lists/diceware_jp.c206ddb1.js"></script>
-    <script src="lists/diceware_mi.902f7641.js"></script>
-    <script src="lists/diceware_nl.8043d965.js"></script>
-    <script src="lists/diceware_nl_alt.cc47c3c0.js"></script>
-    <script src="lists/diceware_no.c67cdf66.js"></script>
-    <script src="lists/diceware_pl.885d727a.js"></script>
-    <script src="lists/diceware_pt.b9ff69de.js"></script>
-    <script src="lists/diceware_ru.d882d8f7.js"></script>
-    <script src="lists/diceware_sl.b4229c07.js"></script>
-    <script src="lists/diceware_sv.e94986a4.js"></script>
-    <script src="lists/diceware_tr.d0babcbb.js"></script>
+    <script src="lists/diceware_beale.5ebaa633.js"></script>
+    <script src="lists/diceware_bg.c56b5b73.js"></script>
+    <script src="lists/diceware_ca.a13a61a7.js"></script>
+    <script src="lists/diceware_cn.d80da059.js"></script>
+    <script src="lists/diceware_cz.486777b4.js"></script>
+    <script src="lists/diceware_da.e709461e.js"></script>
+    <script src="lists/diceware_de.781c1b69.js"></script>
+    <script src="lists/diceware_en.04b60797.js"></script>
+    <script src="lists/diceware_eo.33497941.js"></script>
+    <script src="lists/diceware_es.fdc6837b.js"></script>
+    <script src="lists/diceware_et.69ddc810.js"></script>
+    <script src="lists/diceware_eu.6a095a0a.js"></script>
+    <script src="lists/diceware_fi.c4ba2c8e.js"></script>
+    <script src="lists/diceware_fr.4b1c303b.js"></script>
+    <script src="lists/diceware_hu.bb9a08a0.js"></script>
+    <script src="lists/diceware_it.5e0e1cf8.js"></script>
+    <script src="lists/diceware_iw.d8a88f1c.js"></script>
+    <script src="lists/diceware_jp.a972d517.js"></script>
+    <script src="lists/diceware_la.8663efdb.js"></script>
+    <script src="lists/diceware_mi.df3ac962.js"></script>
+    <script src="lists/diceware_nl.e71d84b6.js"></script>
+    <script src="lists/diceware_no.5ea8a968.js"></script>
+    <script src="lists/diceware_pl.0b79bfc3.js"></script>
+    <script src="lists/diceware_pt.54c07a30.js"></script>
+    <script src="lists/diceware_ro.f00225b2.js"></script>
+    <script src="lists/diceware_ru.df8050b6.js"></script>
+    <script src="lists/diceware_sk.897697e0.js"></script>
+    <script src="lists/diceware_sl.31c034bb.js"></script>
+    <script src="lists/diceware_sv.db9940e5.js"></script>
+    <script src="lists/diceware_tr.decb7ae5.js"></script>
 
     <!-- eff passphrase generator -->
-    <script src="lists/eff_distant.e5c921bf.js"></script>
-    <script src="lists/eff_long.fedffa81.js"></script>
-    <script src="lists/eff_short.8670fe26.js"></script>
+    <script src="lists/eff_distant.b3690020.js"></script>
+    <script src="lists/eff_gameofthrones.40edb313.js"></script>
+    <script src="lists/eff_harrypotter.969efb57.js"></script>
+    <script src="lists/eff_long.b4028f5f.js"></script>
+    <script src="lists/eff_short.00642106.js"></script>
+    <script src="lists/eff_startrek.7794e07c.js"></script>
+    <script src="lists/eff_starwars.8559c220.js"></script>
 
     <!-- emoji - on its own -->
-    <script src="lists/random_emoji.6182baea.js"></script>
+    <script src="lists/random_emoji.96d739fc.js"></script>
 
     <script>
       function load_passes() {
